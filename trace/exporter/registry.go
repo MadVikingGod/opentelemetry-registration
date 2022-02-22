@@ -18,7 +18,7 @@ func Set(name string, exporterProvider func() trace.SpanExporter) {
 
 func GetExporter() trace.SpanExporter {
 	name, ok := os.LookupEnv("OTEL_TRACES_EXPORTER")
-	if !ok {
+	if !ok || name == "" {
 		name = "otlp"
 	}
 
